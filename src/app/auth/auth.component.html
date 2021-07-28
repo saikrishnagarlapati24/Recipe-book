@@ -1,0 +1,28 @@
+<ng-template appPlaceholder></ng-template>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+    <!-- <div class="alert alert-danger" *ngIf="error">
+      <p>{{error}}</p>
+    </div> -->
+    <!-- <app-alert [message] = "error" *ngIf="error" (close) ="onHandleError()"></app-alert> -->
+    <!-- <ng-template appPlaceholder></ng-template> --><!-- this tag ships with angular, dznt render anything in dom but accessible here in the template -->
+    
+    <div *ngIf = "isLoading" style="text-align: center; margin: 20% auto">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <form #authForm = ngForm (ngSubmit) = "onSubmit(authForm)" *ngIf= "!isLoading"><!-- this gives access to the angular created form object -->
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="email" id = "email" class="form-control" placeholder="example@email.com" name = "email" ngModel required email> <!-- type = xxx is a html validator which agular disables by default (read in some html doc provided in that section If I remember) required, email are angular valdators-->
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id = "password" class="form-control" placeholder="Password" name = "password" ngModel required minlength="6">
+      </div>
+      <div>
+        <button class="btn btn-primary" type = "submit" style = "margin-right: 10px;" [disabled] = "!authForm.valid">{{inLoginMode ? 'Login' : 'Signup'}}</button>
+        <button class="btn btn-default" type = "button" (click) = "onSwitchMode()">{{inLoginMode ? 'Create an account' : 'Already have an account? Login'}}</button>
+      </div>
+    </form>
+  </div>
+</div>

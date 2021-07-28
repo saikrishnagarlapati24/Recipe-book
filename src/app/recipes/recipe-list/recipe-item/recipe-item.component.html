@@ -1,0 +1,10 @@
+<!-- <a style= "cursor: pointer;" class= "list-group-item clearfix" (click) = OnSelected()> -->
+<a [routerLink]="[index]" style= "cursor: pointer;" class= "list-group-item clearfix" routerLinkActive = "active" style= "margin-bottom: 7px;">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{rec.name}}</h4>
+    <p class= "list-group-item-text">{{rec.description}}</p>
+  </div>
+  <span class = "pull-right">
+    <img [src]="rec.imagePath" alt="{{rec.name}}" class="img-responsive" style = "max-height: 50px;"> <!-- we can use either string interpolation or property binding -->
+  </span>
+</a>

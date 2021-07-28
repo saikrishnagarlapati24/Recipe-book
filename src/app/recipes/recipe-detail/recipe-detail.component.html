@@ -1,0 +1,42 @@
+<div class="class-added-by-me-to-avoid-empty-recipe" *ngIf = "reci"> <!-- because not only if this route is entered before fetching the data but if the number of recipes is 0 -->
+  <div class="row">
+    <div class="col-xs-12">
+      <img [src]="reci.imagePath" [alt]="reci.name" class = "img-responsive" style = "max-height: 300px;">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{reci.name}}</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="btn-group" appDropdown>
+        <button type = "button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button> <!-- the downward arrow is because of the drop-down toggle class of the button but not because of the caret class span(it is for styling of that arrow) -->
+        <ul class="dropdown-menu">     <!-- The dropdown menu class won't be directly visible -->
+          <li><a style = "cursor: pointer;" (click) = "onAddToShLi()">To shopping list</a></li>
+          <li><a style = "cursor: pointer;" (click) = "onEdit()">Edit recipe</a></li>
+          <li><a style = "cursor: pointer;" (click) = "onDelete()">Delete recipe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      {{reci.description}}
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class ="list-group-item" *ngFor= "let ing of reci.ingredients">
+          {{ing.name}} - {{ing.amount}}
+        </li>
+      </ul> 
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click) = "OnNew()">New Recipe</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <app-recipe-item *ngFor = "let re of recipes" [r] = "re" (recipeSelected) = "OnRecipeSelected(re)"></app-recipe-item> That was not necessary in the item component because here we are passing the recipe element which was clicked upon simply -->
+    <app-recipe-item *ngFor = "let re of recipes; let i = index" [r] = "re" [index] = "i"></app-recipe-item> <!-- That was not necessary in the item component because here we are passing the recipe element which was clicked upon simply -->
+  </div>
+</div>
+
+
+
